@@ -7,13 +7,10 @@
 # All rights reserved - Do Not Redistribute
 
 include_recipe 'nodejs'
+include_recipe 'supervisor'
 
 cookbook_file 'simple.js' do
     path 'srv/simple.js'
-end
-
-execute 'node srv/simple.js' do
-    not_if 'netstat -l | grep :3000'
 end
 
 package 'nginx'
@@ -26,3 +23,11 @@ end
 service 'nginx' do
     action [:start]
 end
+
+supervisor_service 'hello-world' do
+    command 'node /srv/simple.js'
+    action :enable
+    autostart true
+    autorestart true
+end
+
