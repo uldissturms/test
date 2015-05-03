@@ -18,3 +18,4 @@ gem "test-kitchen"
 gem "kitchen-vagrant"
 gem 'rspec'
 gem 'chefspec'
+gem 'kitchen-ec2'

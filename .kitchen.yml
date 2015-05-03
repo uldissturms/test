@@ -1,12 +1,25 @@
 ---
 driver:
-  name: vagrant
+  aws_access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+  aws_secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+  aws_ssh_key_id: test
+  region: eu-west-1
+  availability_zone: eu-west-1a
 
 provisioner:
   name: chef_zero
 
 platforms:
-    - name: debian-7.8
+  - name: debian-7.8
+    driver:
+      name: vagrant
+  - name: debian-8.0
+    driver:
+      name: ec2
+      image_id: ami-99f39eee
+      flavor_id: t2.micro
+      username: admin
+      ssh_key: test.pem
 
 suites:
   - name: default
