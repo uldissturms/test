@@ -11,4 +11,12 @@ describe 'test::default' do
     it 'installs nodejs recipe' do
         expect(chef_run).to include_recipe('nodejs')
     end
+
+    it 'installs nginx package' do
+        expect(chef_run).to install_package('nginx')
+    end
+    
+    it 'enables nginx' do
+        expect(chef_run).to start_service('nginx')
+    end
 end
