@@ -19,3 +19,5 @@ gem "kitchen-vagrant"
 gem 'rspec'
 gem 'chefspec'
 gem 'kitchen-ec2'
+gem 'kitchen-docker'
+

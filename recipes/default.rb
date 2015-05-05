@@ -31,3 +31,5 @@ supervisor_service 'hello-world' do
     autorestart true
 end
 
+package 'curl'
+package 'net-tools'
